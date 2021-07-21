@@ -1,0 +1,113 @@
+  :root{
+  --white-color: #fff;
+  --blcak-color: #000;
+  --text-color: #333;
+  --primary-color:#f53e2d;
+  --border-color:#dbdbdb;
+
+  --header-height:120px;
+  --navbar-height:32px;
+  --header-with-search: calc(var(--header-height) - var(--navbar-height));
+
+  }
+  *{
+      box-sizing: inherit;
+  }
+  html{
+      /* 62.5%  tương đương với 10px  100% = 16 px  với đơn vị rem  */
+      font-size: 62.5%;
+      line-height: 1.6rem;
+      font-family: sans-serif;
+      box-sizing: border-box;
+  }
+  .grid{
+      width: 1200px;
+      max-width: 100%;
+      margin: 0 auto;
+  }
+  .grid__full-width{
+     width: 100%;
+  }
+  .grid__row{
+      display: flex;
+      flex-wrap: wrap; /* wrap dùng để xuống dòng khi screen không chứa hết 1 dòng*/
+  }
+  /* animation */
+  @keyframes effect     /*tạo hiệu ưng xuất hiện từ 0 đến 1     0 là k có gì 1 là hiện thị đến có elements*/
+  {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+  }
+  @keyframes growth{
+    from {
+      transform: scale(var(--growth-from));
+    }
+    to {
+      opacity: scale(var(--growth-to));
+    }
+  }
+  /* from đăng kí đăng nhập */
+  .modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    animation: effect linear .2s;
+  }
+  .modal__overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .3);
+    /* vì thẻ này bên html ở trên nên nó đè nên thẻ modal__body */
+  }
+  .modal__body{
+    --growth-from: 0.7;
+    --growth-to: 1;
+    margin: auto;
+    /* background-color:var(--white-color); */
+    position: relative;
+    z-index: 1;       /*để cho thẻ body nằm bên trên*/
+    animation: growth linear .3s;
+    
+  }
+  /* button style */
+  .btn{
+    min-width: 142px;
+    height: 34px;
+    text-decoration: none;
+    border-radius: 3px;
+    border: none; /*xóa viền của thẻ button*/
+    font-size: 1.2rem;
+    outline: none;  /*xóa hiệu ứng của nut btn khi bấm vào */
+    cursor: pointer;
+    color: var(--text-color);
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* .btn:hover{
+    background-color: rgba(0, 0, 0, .11);
+  } */
+.btn.btn--main {
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  }
+ .btn.btn--disabled{
+   cursor: default;
+   /* filter:  brightness(80%);giảm độ sáng cong 80% */
+   background-color: #d4d1d1;
+   color: #b9b8b8;
+ }
+ .btn-side-s{
+   height: 29px;
+   font-size: 12px;
+   padding: 0 8px;
+ }
